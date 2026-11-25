@@ -64,7 +64,6 @@ ILKELER = [
 
 # 6. bölüm — SSS
 SSS = [
-    ("Yetkili servis misiniz?", "Hayır. Herhangi bir markanın yetkili servisi değiliz; bağımsız özel teknik servis olarak hizmet veriyoruz. Cihazınız üretici garantisi kapsamındaysa önce markanın yetkili servisine başvurmanızı öneririz."),
     ("Hangi cihazlara bakıyorsunuz?", "Buzdolabı, çamaşır makinesi, bulaşık makinesi, fırın ve ocak gibi beyaz eşyalar ile kombi ve klimalara arıza, bakım ve onarım hizmeti veriyoruz."),
     ("Ücreti ne zaman öğrenirim?", "Arıza tespitinden sonra, işleme başlamadan önce. Ücret cihaza, arızaya ve gerekiyorsa değişecek parçaya göre belirlenir. Onay vermezseniz işlem yapılmaz."),
     ("Adrese geliyor musunuz?", "Evet, randevu ile adreste servis veriyoruz. Arayarak ya da WhatsApp'tan adresinizi ve arızayı iletebilirsiniz."),
