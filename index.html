@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Sora:wght@600;700&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Sora:wght@600;700&display=swap"></noscript>
-<style>:root{--ink:#0c1b24;--ink2:#3d4f5a;--muted:#6a7b85;--bg:#f5f7f6;--card:#fff;--line:#e2e8e6;--pet:#0f5f73;--pet2:#0b4a5a;--pet-soft:#e4f1f3;--amb:#f4a21b;--amb2:#de8c06;--wa:#1faa59;--r:18px;--sh:0 10px 30px -14px rgba(12,27,36,.28);--f:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;--fh:'Sora','Manrope',system-ui,sans-serif}
+<style>:root{--ink:#0a1f36;--ink2:#3b4d61;--muted:#66788b;--bg:#f3f6fa;--card:#fff;--line:#dfe6ef;--pet:#0d4c8c;--pet2:#0a2e57;--pet-soft:#e7effa;--lac:#0a2342;--lac2:#061629;--tur:#18a7c4;--amb:#f4a21b;--amb2:#de8c06;--wa:#1faa59;--r:18px;--sh:0 10px 30px -14px rgba(12,27,36,.28);--f:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;--fh:'Sora','Manrope',system-ui,sans-serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;font:400 16px/1.65 var(--f);color:var(--ink);background:var(--bg)}
 img,svg{display:block;max-width:100%}a{color:inherit}
@@ -27,12 +27,12 @@ p{margin:0 0 1em}.kap{width:min(1160px,100% - 32px);margin-inline:auto}
 .serit{background:#040c10;color:#d8e4e8;font-size:.86rem;text-align:center;padding:12px 16px;margin-top:28px;border-top:1px solid rgba(255,255,255,.08)}
 .serit b{color:#fff;font-weight:700}
 /* üst menü */
-.ust{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.ust{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.4) blur(10px);border-top:4px solid var(--pet);border-bottom:1px solid var(--line);box-shadow:0 6px 20px -16px rgba(10,35,66,.5)}
 .ust .kap{display:flex;align-items:center;gap:18px;min-height:68px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 1.05rem var(--fh);color:var(--ink)}
-.logo-isaret{width:38px;height:38px;border-radius:11px;background:linear-gradient(140deg,var(--pet),#147f97);color:#fff;display:grid;place-items:center;flex:none}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;font:800 1.08rem var(--fh);color:var(--lac);letter-spacing:-.01em}
+.logo-isaret{width:42px;height:42px;border-radius:12px;background:linear-gradient(140deg,var(--pet),var(--lac));box-shadow:inset 0 -3px 0 var(--tur);color:#fff;display:grid;place-items:center;flex:none}
 .logo-isaret svg{width:21px;height:21px}
-.logo small{display:block;font:600 .7rem var(--f);color:var(--muted);letter-spacing:.02em}
+.logo small{display:block;font:700 .68rem var(--f);color:var(--pet);letter-spacing:.08em;text-transform:uppercase}
 .menu{margin-left:auto;display:flex;align-items:center;gap:4px}
 .menu a{text-decoration:none;font-weight:600;font-size:.93rem;color:var(--ink2);padding:8px 12px;border-radius:10px}
 .menu a:hover{background:var(--pet-soft);color:var(--pet2)}
@@ -47,33 +47,38 @@ p{margin:0 0 1em}.kap{width:min(1160px,100% - 32px);margin-inline:auto}
 .btn-kucuk{min-height:42px;padding:0 16px;font-size:.92rem;border-radius:12px}
 .dugmeler{display:flex;flex-wrap:wrap;gap:12px}
 /* 1 — hero */
-.hero{position:relative;overflow:hidden;background:radial-gradient(1200px 500px at 85% -10%,#d6ecef 0,transparent 60%),linear-gradient(180deg,#fff,var(--bg));padding:56px 0 64px}
-.hero .kap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
-.ust-etiket{display:inline-flex;align-items:center;gap:8px;font:700 .78rem var(--f);letter-spacing:.08em;text-transform:uppercase;color:var(--pet);background:var(--pet-soft);padding:7px 12px;border-radius:999px;margin-bottom:16px}
+.hero{position:relative;overflow:hidden;background:var(--lac);color:#fff;min-height:560px;display:flex;align-items:center;padding:70px 0}
+.hero-gorsel{position:absolute;inset:0 0 0 32%;background:var(--lac)}
+.hero-gorsel img,.hero-gorsel .cizim{width:100%;height:100%;object-fit:cover;object-position:35% 40%}
+.hero-gorsel::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--lac) 0,rgba(10,35,66,.92) 14%,rgba(10,35,66,.45) 42%,rgba(10,35,66,0) 70%)}
+.hero .kap{position:relative;z-index:1}
+.hero-ic{max-width:560px}
+.ust-etiket{display:inline-flex;align-items:center;gap:8px;font:700 .76rem var(--f);letter-spacing:.09em;text-transform:uppercase;color:var(--pet);background:var(--pet-soft);padding:7px 12px;border-radius:999px;margin-bottom:16px}
 .ust-etiket i{width:7px;height:7px;border-radius:50%;background:var(--amb)}
-.hero h1 em{font-style:normal;color:var(--pet)}
-.hero .giris{font-size:1.12rem;color:var(--ink2);max-width:36em}
-.hero-tel{font:700 1.5rem var(--fh);color:var(--ink);text-decoration:none;display:inline-block;margin:6px 0 18px}
-.hero-tel small{display:block;font:600 .78rem var(--f);color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
-.guven{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-wrap:wrap;gap:10px 18px;font-weight:600;font-size:.93rem;color:var(--ink2)}
-.guven li{display:flex;align-items:center;gap:7px}.guven svg{width:18px;height:18px;color:var(--pet)}
-.hero-gorsel{position:relative;aspect-ratio:5/4.4;border-radius:28px;overflow:hidden;background:linear-gradient(150deg,var(--pet),#0a3b47);box-shadow:var(--sh)}
-.hero-gorsel img{width:100%;height:100%;object-fit:cover}
-.hero-gorsel .cizim{position:absolute;inset:0;width:100%;height:100%}
-.hero-not{position:absolute;left:16px;right:16px;bottom:16px;background:rgba(255,255,255,.95);border-radius:16px;padding:12px 14px;display:flex;gap:12px;align-items:center;font-size:.88rem;color:var(--ink2);box-shadow:var(--sh)}
-.hero-not b{color:var(--ink);display:block;font-size:.95rem}
-.hero-not .nk{width:40px;height:40px;border-radius:12px;background:var(--pet-soft);color:var(--pet);display:grid;place-items:center;flex:none}.hero-not .nk svg{width:22px;height:22px}
+.hero .ust-etiket{background:rgba(24,167,196,.16);color:#8fe0f0;border:1px solid rgba(143,224,240,.3)}
+.hero h1{color:#fff}.hero h1 em{font-style:normal;color:var(--amb)}
+.hero .giris{font-size:1.12rem;color:#cdd9e6;max-width:34em}
+.hero-tel{font:800 1.6rem var(--fh);color:#fff;text-decoration:none;display:inline-block;margin:6px 0 18px;padding-left:14px;border-left:4px solid var(--amb)}
+.hero-tel small{display:block;font:700 .74rem var(--f);color:#8fa6bd;letter-spacing:.08em;text-transform:uppercase}
+.hero .btn-wa{box-shadow:none}
+/* kurumsal şerit */
+.kurumsal{background:var(--pet);color:#fff;position:relative;z-index:2}
+.kurumsal .kap{display:grid;grid-template-columns:repeat(4,1fr)}
+.k-oge{display:flex;align-items:center;gap:14px;padding:22px 18px;border-right:1px solid rgba(255,255,255,.14)}
+.k-oge:last-child{border-right:0}
+.k-oge svg{width:40px;height:40px;padding:9px;border-radius:12px;background:rgba(255,255,255,.12);color:#fff;flex:none}
+.k-oge b{display:block;font:700 .98rem var(--fh)}.k-oge span{font-size:.84rem;color:#c9dcf2;line-height:1.4}
 /* bölümler */
-.bolum{padding:84px 0}.bolum.beyaz{background:#fff}.bolum.koyu{background:var(--ink);color:#e7eef1}
+.bolum{padding:84px 0}.bolum.beyaz{background:#fff}.bolum.koyu{background:linear-gradient(160deg,var(--lac),var(--lac2));color:#e7eef1}
 .bolum.koyu h2,.bolum.koyu h3{color:#fff}.bolum.koyu .bas p{color:#a9bcc4}
 .bas{max-width:700px;margin-bottom:38px}.bas p{color:var(--muted);font-size:1.05rem}
-.bas .ust-etiket{margin-bottom:12px}.bolum.koyu .ust-etiket{background:rgba(255,255,255,.08);color:#9fd6e0}
+.bas .ust-etiket{margin-bottom:12px}.bas h2{position:relative;padding-bottom:14px;color:var(--lac)}.bas h2::after{content:"";position:absolute;left:0;bottom:0;width:56px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--pet),var(--tur))}.bolum.koyu .bas h2{color:#fff}.bolum.koyu .ust-etiket{background:rgba(255,255,255,.08);color:#9fd6e0}
 .izgara{display:grid;gap:18px}
 /* 2 — cihazlar */
 .cihazlar{grid-template-columns:repeat(3,1fr)}
-.cihaz{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s}
+.cihaz{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--pet);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s}
 .cihaz:hover{box-shadow:var(--sh);transform:translateY(-2px)}
-.cihaz-foto{aspect-ratio:16/10;background:var(--pet-soft);color:var(--pet);display:grid;place-items:center}
+.cihaz-foto{aspect-ratio:16/10;background:var(--pet-soft);color:var(--pet);display:grid;place-items:center;overflow:hidden}.cihaz-foto img{transition:transform .4s}.cihaz:hover .cihaz-foto img{transform:scale(1.04)}
 .cihaz-foto img{width:100%;height:100%;object-fit:cover}.cihaz-foto svg{width:64px;height:64px;opacity:.85}
 .cihaz-ic{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
 .cihaz-ic p{color:var(--ink2);font-size:.95rem;flex:1}
@@ -81,7 +86,7 @@ p{margin:0 0 1em}.kap{width:min(1160px,100% - 32px);margin-inline:auto}
 /* 3 — belirtiler */
 .belirtiler{grid-template-columns:repeat(2,1fr)}
 .belirti{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;display:grid;grid-template-columns:40px 1fr;gap:4px 14px}
-.belirti .no{grid-row:span 2;width:40px;height:40px;border-radius:12px;background:#fff4e0;color:var(--amb2);display:grid;place-items:center;font:700 .95rem var(--fh)}
+.belirti .no{grid-row:span 2;width:40px;height:40px;border-radius:12px;background:var(--pet);color:#fff;display:grid;place-items:center;font:700 .95rem var(--fh)}
 .belirti h3{margin:6px 0 2px}.belirti p{margin:0;color:var(--ink2);font-size:.95rem}
 .uyari-kutu{margin-top:22px;padding:14px 18px;border-radius:14px;background:#fff8ec;border:1px solid #f6dfb1;color:#6b4a07;font-size:.93rem}
 /* 4 — süreç */
@@ -89,12 +94,12 @@ p{margin:0 0 1em}.kap{width:min(1160px,100% - 32px);margin-inline:auto}
 .surec li{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px 18px 20px;counter-increment:a}
 .surec li::before{content:counter(a);display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--pet);color:#fff;font:700 1rem var(--fh);margin-bottom:12px}
 .surec p{margin:0;color:var(--ink2);font-size:.93rem}
-.surec-alt{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;justify-content:space-between;background:var(--pet-soft);border-radius:var(--r);padding:20px 22px}
-.surec-alt p{margin:0;font-weight:600;color:var(--pet2)}
+.surec-alt{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;justify-content:space-between;background:var(--pet);color:#fff;border-radius:var(--r);padding:20px 22px}
+.surec-alt p{margin:0;font-weight:700;color:#fff}
 /* 5 — ilkeler */
 .ilkeler{grid-template-columns:repeat(4,1fr)}
 .ilke{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:24px 22px}
-.ilke svg{width:30px;height:30px;color:var(--amb);margin-bottom:14px}.ilke p{margin:0;color:#b9cad1;font-size:.94rem}
+.ilke{border-top:3px solid var(--tur)!important}.ilke svg{width:30px;height:30px;color:var(--tur);margin-bottom:14px}.ilke p{margin:0;color:#b9cad1;font-size:.94rem}
 /* 6 — SSS */
 .dar{width:min(860px,100% - 32px)}
 .sss details{background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:12px}
@@ -121,24 +126,25 @@ p{margin:0 0 1em}.kap{width:min(1160px,100% - 32px);margin-inline:auto}
 .form .kvkk{font-size:.8rem;color:var(--muted);margin:10px 0 0}
 .bal{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 /* alt */
-footer{background:#08141b;color:#9fb2ba;padding:46px 0 0;font-size:.92rem}
+footer{background:var(--lac2);border-top:4px solid var(--pet);color:#9fb2ba;padding:46px 0 0;font-size:.92rem}
 footer .kap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:28px}
 footer .logo{color:#fff;margin-bottom:12px}footer .logo small{color:#7f949d}
 footer h3{color:#fff;font-size:.95rem;margin-bottom:10px}footer ul{list-style:none;padding:0;margin:0}footer li{margin:5px 0}
 footer a{color:#cfe0e6;text-decoration:none}footer a:hover{text-decoration:underline}
-.yasal{grid-column:1/-1;border-top:1px solid #1c2c34;padding-top:18px;font-size:.82rem;color:#7f949d}
+.yasal{grid-column:1/-1;border-top:1px solid #16304f;padding-top:18px;font-size:.82rem;color:#7f949d}
 /* sabit mobil çubuk */
 .yapiskan{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);border-top:1px solid var(--line);box-shadow:0 -8px 24px -12px rgba(0,0,0,.25)}
 .yapiskan .btn{flex:1;min-height:50px;padding:0 10px}
 /* alt sayfalar */
 .metin{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:32px clamp(18px,4vw,40px);margin:40px auto 70px}
 .metin h1{font-size:clamp(1.7rem,4vw,2.3rem)}.metin h2{font-size:1.25rem;margin-top:1.6em}.metin p,.metin li{color:var(--ink2)}
-@media (max-width:1020px){.hero .kap{grid-template-columns:1fr;gap:34px}.hero-gorsel{max-width:620px;aspect-ratio:16/11}.cihazlar{grid-template-columns:repeat(2,1fr)}.surec{grid-template-columns:repeat(2,1fr)}.surec li:last-child{grid-column:1/-1}.ilkeler{grid-template-columns:repeat(2,1fr)}.iletisim{grid-template-columns:1fr}footer .kap{grid-template-columns:1fr 1fr}footer .kap>div:first-child{grid-column:1/-1}}
+@media (max-width:1020px){.kurumsal .kap{grid-template-columns:repeat(2,1fr)}.k-oge:nth-child(2){border-right:0}.k-oge:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.14)}.cihazlar{grid-template-columns:repeat(2,1fr)}.surec{grid-template-columns:repeat(2,1fr)}.surec li:last-child{grid-column:1/-1}.ilkeler{grid-template-columns:repeat(2,1fr)}.iletisim{grid-template-columns:1fr}footer .kap{grid-template-columns:1fr 1fr}footer .kap>div:first-child{grid-column:1/-1}}
 @media (max-width:860px){.menu-ac{display:block}.menu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;background:#fff;border-bottom:1px solid var(--line);padding:10px 16px 16px;gap:2px;box-shadow:var(--sh)}.menu.acik{display:flex}.menu a{padding:13px 12px;font-size:1rem}.menu .btn{margin-top:8px}.yapiskan{display:flex}.ust .menu .btn-ara{display:none}footer .serit{padding-bottom:calc(86px + env(safe-area-inset-bottom))}}
-@media (max-width:640px){.bolum{padding:60px 0}.hero{padding:34px 0 46px}.cihazlar,.belirtiler,.ilkeler,.surec{grid-template-columns:1fr}.surec li:last-child{grid-column:auto}.hero .dugmeler .btn{flex:1 1 100%}.logo small{display:none}footer .kap{grid-template-columns:1fr}.serit{font-size:.76rem}}
+@media (max-width:760px){.hero{display:block;min-height:0;padding:0 0 40px}.hero-gorsel{position:relative;inset:auto;aspect-ratio:16/10}.hero-gorsel::after{background:linear-gradient(180deg,rgba(10,35,66,0) 55%,var(--lac) 100%)}.hero .kap{margin-top:-24px}}
+@media (max-width:640px){.bolum{padding:60px 0}.kurumsal .kap{grid-template-columns:1fr;width:100%}.k-oge{border-right:0!important;border-bottom:1px solid rgba(255,255,255,.14);padding:16px 20px}.k-oge:last-child{border-bottom:0}.cihazlar,.belirtiler,.ilkeler,.surec{grid-template-columns:1fr}.surec li:last-child{grid-column:auto}.hero .dugmeler .btn{flex:1 1 100%}.logo small{display:none}footer .kap{grid-template-columns:1fr}.serit{font-size:.76rem}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Servis Müşteri Hizmeti", "url": "https://servismusterihizmeti.com.tr/", "inLanguage": "tr-TR"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Yetkili servis misiniz?", "acceptedAnswer": {"@type": "Answer", "text": "Hayır. Herhangi bir markanın yetkili servisi değiliz; bağımsız özel teknik servis olarak hizmet veriyoruz. Cihazınız üretici garantisi kapsamındaysa önce markanın yetkili servisine başvurmanızı öneririz."}}, {"@type": "Question", "name": "Hangi cihazlara bakıyorsunuz?", "acceptedAnswer": {"@type": "Answer", "text": "Buzdolabı, çamaşır makinesi, bulaşık makinesi, fırın ve ocak gibi beyaz eşyalar ile kombi ve klimalara arıza, bakım ve onarım hizmeti veriyoruz."}}, {"@type": "Question", "name": "Ücreti ne zaman öğrenirim?", "acceptedAnswer": {"@type": "Answer", "text": "Arıza tespitinden sonra, işleme başlamadan önce. Ücret cihaza, arızaya ve gerekiyorsa değişecek parçaya göre belirlenir. Onay vermezseniz işlem yapılmaz."}}, {"@type": "Question", "name": "Adrese geliyor musunuz?", "acceptedAnswer": {"@type": "Answer", "text": "Evet, randevu ile adreste servis veriyoruz. Arayarak ya da WhatsApp'tan adresinizi ve arızayı iletebilirsiniz."}}, {"@type": "Question", "name": "Kombi ve klima bakımı ne zaman yapılmalı?", "acceptedAnswer": {"@type": "Answer", "text": "Kombi için ısıtma sezonu başlamadan, klima için yoğun kullanım dönemi öncesinde yılda bir bakım genel olarak önerilir."}}, {"@type": "Question", "name": "Kişisel bilgilerim nasıl kullanılıyor?", "acceptedAnswer": {"@type": "Answer", "text": "Paylaştığınız ad, telefon ve adres yalnızca servis talebiniz için kullanılır. Ayrıntılar Gizlilik ve KVKK sayfamızdadır."}}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "serviceType": "Beyaz eşya, kombi ve klima teknik servisi", "provider": {"@type": "Organization", "name": "Servis Müşteri Hizmeti", "url": "https://servismusterihizmeti.com.tr/"}, "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Servis hizmetleri", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Buzdolabı servisi"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Çamaşır Makinesi servisi"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Bulaşık Makinesi servisi"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Fırın ve Ocak servisi"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Kombi servisi"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Klima servisi"}}]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Servis Müşteri Hizmeti", "url": "https://servismusterihizmeti.com.tr/", "inLanguage": "tr-TR"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Yetkili servis misiniz?", "acceptedAnswer": {"@type": "Answer", "text": "Hayır. Herhangi bir markanın yetkili servisi değiliz; bağımsız özel teknik servis olarak hizmet veriyoruz. Cihazınız üretici garantisi kapsamındaysa önce markanın yetkili servisine başvurmanızı öneririz."}}, {"@type": "Question", "name": "Hangi cihazlara bakıyorsunuz?", "acceptedAnswer": {"@type": "Answer", "text": "Buzdolabı, çamaşır makinesi, bulaşık makinesi, fırın ve ocak gibi beyaz eşyalar ile kombi ve klimalara arıza, bakım ve onarım hizmeti veriyoruz."}}, {"@type": "Question", "name": "Ücreti ne zaman öğrenirim?", "acceptedAnswer": {"@type": "Answer", "text": "Arıza tespitinden sonra, işleme başlamadan önce. Ücret cihaza, arızaya ve gerekiyorsa değişecek parçaya göre belirlenir. Onay vermezseniz işlem yapılmaz."}}, {"@type": "Question", "name": "Adrese geliyor musunuz?", "acceptedAnswer": {"@type": "Answer", "text": "Evet, randevu ile adreste servis veriyoruz. Arayarak ya da WhatsApp'tan adresinizi ve arızayı iletebilirsiniz."}}, {"@type": "Question", "name": "Kombi ve klima bakımı ne zaman yapılmalı?", "acceptedAnswer": {"@type": "Answer", "text": "Kombi için ısıtma sezonu başlamadan, klima için yoğun kullanım dönemi öncesinde yılda bir bakım genel olarak önerilir."}}, {"@type": "Question", "name": "Kişisel bilgilerim nasıl kullanılıyor?", "acceptedAnswer": {"@type": "Answer", "text": "Paylaştığınız ad, telefon ve adres yalnızca servis talebiniz için kullanılır. Ayrıntılar Gizlilik ve KVKK sayfamızdadır."}}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "serviceType": "Beyaz eşya, kombi ve klima teknik servisi", "provider": {"@type": "Organization", "name": "Servis Müşteri Hizmeti", "url": "https://servismusterihizmeti.com.tr/"}, "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Servis hizmetleri", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Buzdolabı servisi"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Çamaşır Makinesi servisi"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Bulaşık Makinesi servisi"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Fırın ve Ocak servisi"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Kombi servisi"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Klima servisi"}}]}}</script><link rel="preload" as="image" href="img/hero-800.webp" imagesrcset="img/hero-800.webp 800w, img/hero-1400.webp 1400w" imagesizes="100vw" fetchpriority="high">
 </head><body><header class="ust"><div class="kap">
 <a class="logo" href="#ust" aria-label="Servis Müşteri Hizmeti ana sayfa"><span class="logo-isaret"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></span><span>Servis Müşteri Hizmeti<small>Beyaz eşya · Kombi · Klima</small></span></a>
 <button class="menu-ac" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
@@ -148,29 +154,29 @@ footer a{color:#cfe0e6;text-decoration:none}footer a:hover{text-decoration:under
 </nav></div></header>
 <main id="ust">
 <!-- 1 · GİRİŞ -->
-<section class="hero" aria-labelledby="h1"><div class="kap">
-<div>
+<section class="hero" aria-labelledby="h1">
+<div class="hero-gorsel"><img src="img/hero-800.webp" srcset="img/hero-800.webp 800w, img/hero-1400.webp 1400w" sizes="100vw" width="800" height="450" alt="Mutfakta beyaz eşyaların önünde gülümseyen anne ve kızı" fetchpriority="high"></div>
+<div class="kap">
+<div class="hero-ic">
 <span class="ust-etiket"><i></i>Adreste arıza tespiti ve onarım</span>
 <h1 id="h1">Beyaz eşya, kombi ve <em>klima servisi</em></h1>
 <p class="giris">Buzdolabı, çamaşır makinesi, bulaşık makinesi, fırın, kombi ve klima arızalarında teknisyenimiz adresinize gelir, arızayı tespit eder ve ücreti işlemden önce söyler.</p>
 <a class="hero-tel" href="#iletisim" data-olay="arama_tiklama" data-konum="hero-numara"><small>Servis hattı</small>0 (5XX) XXX XX XX</a>
 <div class="dugmeler"><a class="btn btn-ara" href="#iletisim" data-olay="arama_tiklama" data-konum="hero"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>Hemen Ara</span></a><a class="btn btn-wa" href="#iletisim"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.6.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg><span>WhatsApp ile Yaz</span></a></div>
-<ul class="guven"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Adreste arıza tespiti</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Ücret işlemden önce</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Onarım sonrası test</li></ul>
 </div>
-<div class="hero-gorsel"><svg class="cizim" viewBox="0 0 500 440" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14809a"/><stop offset="1" stop-color="#0a3b47"/></linearGradient></defs>
-<rect width="500" height="440" fill="url(#hg)"/><g fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".92">
-<rect x="58" y="70" width="110" height="250" rx="14"/><path d="M58 150h110M82 100v22M82 172v40"/>
-<rect x="196" y="140" width="130" height="180" rx="14"/><circle cx="261" cy="238" r="50"/><circle cx="261" cy="238" r="34" opacity=".5"/><path d="M214 162h.1M232 162h.1M290 162h24"/>
-<rect x="354" y="80" width="96" height="120" rx="12"/><path d="M384 236v-36M420 236v-36M402 110c-9 12-13 19-13 25a13 13 0 0 0 26 0c0-6-4-13-13-25z"/></g>
-<g fill="#f4a21b"><circle cx="402" cy="290" r="34" opacity=".95"/></g><path d="M391 289l8 8 15-16" fill="none" stroke="#1c1400" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M40 346h420" stroke="#fff" stroke-opacity=".25" stroke-width="2"/></svg></div>
 </div></section>
+<div class="kurumsal"><div class="kap">
+<div class="k-oge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg><span><b>Adreste arıza tespiti</b>Teknisyen evinize gelir</span></div>
+<div class="k-oge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg><span><b>Ücret işlemden önce</b>Onayınız olmadan işlem yok</span></div>
+<div class="k-oge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Onarım sonrası test</b>Cihaz çalışırken teslim</span></div>
+<div class="k-oge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg><span><b>Hafta sonu da randevu</b>Size uygun saatte</span></div>
+</div></div>
 
 <!-- 2 · HİZMETLER -->
 <section class="bolum beyaz" id="cihazlar" aria-labelledby="h-cihaz"><div class="kap">
 <div class="bas"><span class="ust-etiket"><i></i>Hizmetlerimiz</span><h2 id="h-cihaz">Hangi cihaza servis veriyoruz?</h2>
 <p>Evinizdeki beyaz eşya, kombi ve klimanın arıza, bakım ve onarımı için tek numara.</p></div>
-<div class="izgara cihazlar"><article class="cihaz"><div class="cihaz-foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2.5"/><path d="M5 9.5h14M8.5 5v2M8.5 12.5v3.5"/></svg></div><div class="cihaz-ic"><h3>Buzdolabı Servisi</h3><p>Soğutma kaybı, karlanma, su sızıntısı, fan ve termostat sorunları.</p><a href="#iletisim">Servis talebi gönder →</a></div></article><article class="cihaz"><div class="cihaz-foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="2" width="17" height="20" rx="2.5"/><circle cx="12" cy="13.5" r="5"/><path d="M7 5.5h.01M10 5.5h.01M9.5 14.5c1.5 1 3.5 1 5 0"/></svg></div><div class="cihaz-ic"><h3>Çamaşır Makinesi Servisi</h3><p>Su boşaltmama, sıkmama, kapak kilidi, aşırı titreşim ve hata uyarıları.</p><a href="#iletisim">Servis talebi gönder →</a></div></article><article class="cihaz"><div class="cihaz-foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2.5"/><path d="M4 7h16M7.5 4.5h.01M8 11h8M8 14.5h8M8 18h8"/></svg></div><div class="cihaz-ic"><h3>Bulaşık Makinesi Servisi</h3><p>Temiz yıkamama, su almama, kurutmama ve pompa arızaları.</p><a href="#iletisim">Servis talebi gönder →</a></div></article><article class="cihaz"><div class="cihaz-foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M3 8h18M6.5 5.5h.01M10 5.5h.01M7 11.5h10v6H7z"/></svg></div><div class="cihaz-ic"><h3>Fırın ve Ocak Servisi</h3><p>Isınmama, rezistans, termostat, fan ve ocak gözü arızaları.</p><a href="#iletisim">Servis talebi gönder →</a></div></article><article class="cihaz"><div class="cihaz-foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="15" rx="2.5"/><path d="M9 21v-4M15 21v-4M12 5.5c-1.6 2-2.2 3.2-2.2 4.2a2.2 2.2 0 0 0 4.4 0c0-1-.6-2.2-2.2-4.2z"/></svg></div><div class="cihaz-ic"><h3>Kombi Servisi</h3><p>Sıcak su sorunu, basınç düşmesi, arıza kodları ve yıllık bakım.</p><a href="#iletisim">Servis talebi gönder →</a></div></article><article class="cihaz"><div class="cihaz-foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="8.5" rx="2.5"/><path d="M6 9.5h12M7 16c0 1.5-1 2-1 3.5M12 16v4M17 16c0 1.5 1 2 1 3.5"/></svg></div><div class="cihaz-ic"><h3>Klima Servisi</h3><p>Soğutmama, su damlatma, koku, ses ve mevsimlik bakım.</p><a href="#iletisim">Servis talebi gönder →</a></div></article></div>
+<div class="izgara cihazlar"><article class="cihaz"><div class="cihaz-foto"><img src="img/buzdolabi-480.webp" srcset="img/buzdolabi-480.webp 480w, img/buzdolabi-800.webp 800w" sizes="(max-width:640px) 92vw, (max-width:1020px) 46vw, 370px" width="480" height="270" alt="Buzdolabı onarımı yapan teknisyen" loading="lazy" decoding="async"></div><div class="cihaz-ic"><h3>Buzdolabı Servisi</h3><p>Soğutma kaybı, karlanma, su sızıntısı, fan ve termostat sorunları.</p><a href="#iletisim">Servis talebi gönder →</a></div></article><article class="cihaz"><div class="cihaz-foto"><img src="img/camasir-480.webp" srcset="img/camasir-480.webp 480w, img/camasir-800.webp 800w" sizes="(max-width:640px) 92vw, (max-width:1020px) 46vw, 370px" width="480" height="270" alt="Çamaşır Makinesi onarımı yapan teknisyen" loading="lazy" decoding="async"></div><div class="cihaz-ic"><h3>Çamaşır Makinesi Servisi</h3><p>Su boşaltmama, sıkmama, kapak kilidi, aşırı titreşim ve hata uyarıları.</p><a href="#iletisim">Servis talebi gönder →</a></div></article><article class="cihaz"><div class="cihaz-foto"><img src="img/bulasik-480.webp" srcset="img/bulasik-480.webp 480w, img/bulasik-800.webp 800w" sizes="(max-width:640px) 92vw, (max-width:1020px) 46vw, 370px" width="480" height="320" alt="Bulaşık Makinesi onarımı yapan teknisyen" loading="lazy" decoding="async"></div><div class="cihaz-ic"><h3>Bulaşık Makinesi Servisi</h3><p>Temiz yıkamama, su almama, kurutmama ve pompa arızaları.</p><a href="#iletisim">Servis talebi gönder →</a></div></article><article class="cihaz"><div class="cihaz-foto"><img src="img/firin-480.webp" srcset="img/firin-480.webp 480w, img/firin-800.webp 800w" sizes="(max-width:640px) 92vw, (max-width:1020px) 46vw, 370px" width="480" height="320" alt="Fırın ve Ocak onarımı yapan teknisyen" loading="lazy" decoding="async"></div><div class="cihaz-ic"><h3>Fırın ve Ocak Servisi</h3><p>Isınmama, rezistans, termostat, fan ve ocak gözü arızaları.</p><a href="#iletisim">Servis talebi gönder →</a></div></article><article class="cihaz"><div class="cihaz-foto"><img src="img/kombi-480.webp" srcset="img/kombi-480.webp 480w, img/kombi-800.webp 800w" sizes="(max-width:640px) 92vw, (max-width:1020px) 46vw, 370px" width="480" height="320" alt="Kombi onarımı yapan teknisyen" loading="lazy" decoding="async"></div><div class="cihaz-ic"><h3>Kombi Servisi</h3><p>Sıcak su sorunu, basınç düşmesi, arıza kodları ve yıllık bakım.</p><a href="#iletisim">Servis talebi gönder →</a></div></article><article class="cihaz"><div class="cihaz-foto"><img src="img/klima-480.webp" srcset="img/klima-480.webp 480w, img/klima-800.webp 800w" sizes="(max-width:640px) 92vw, (max-width:1020px) 46vw, 370px" width="480" height="320" alt="Klima onarımı yapan teknisyen" loading="lazy" decoding="async"></div><div class="cihaz-ic"><h3>Klima Servisi</h3><p>Soğutmama, su damlatma, koku, ses ve mevsimlik bakım.</p><a href="#iletisim">Servis talebi gönder →</a></div></article></div>
 </div></section>
 
 <!-- 3 · ARIZA REHBERİ -->

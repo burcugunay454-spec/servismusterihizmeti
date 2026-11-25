@@ -212,13 +212,13 @@ def ana_sayfa():
         sema.insert(0, isletme)
     ek = "".join(f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False)}</script>' for s in sema)
     if "hero" in GORSEL:
-        ek += '<link rel="preload" as="image" href="img/hero-800.webp" imagesrcset="img/hero-800.webp 800w, img/hero-1400.webp 1400w" imagesizes="(max-width:1020px) 92vw, 540px" fetchpriority="high">'
+        ek += '<link rel="preload" as="image" href="img/hero-800.webp" imagesrcset="img/hero-800.webp 800w, img/hero-1400.webp 1400w" imagesizes="100vw" fetchpriority="high">'
     robots = "index,follow,max-image-preview:large" if YAYINDA else "noindex,nofollow"
 
     ara = f'<a class="btn btn-ara" href="{TEL_HREF}" data-olay="arama_tiklama" data-konum="hero">{ik("tel")}<span>Hemen Ara</span></a>'
     yaz = (f'<a class="btn btn-wa" href="{wa("Merhaba, cihazım için servis talebim var.")}" target="_blank" rel="noopener" data-olay="whatsapp_tiklama" data-konum="hero">{ik("wa")}<span>WhatsApp ile Yaz</span></a>'
            if WA_NO else f'<a class="btn btn-wa" href="#iletisim">{ik("wa")}<span>WhatsApp ile Yaz</span></a>')
-    hero_gorsel = resim("hero", "Mutfakta beyaz eşyaların önünde gülümseyen anne ve kızı", "(max-width:1020px) 92vw, 540px", oncelik=True) or HERO_CIZIM
+    hero_gorsel = resim("hero", "Mutfakta beyaz eşyaların önünde gülümseyen anne ve kızı", "100vw", oncelik=True) or HERO_CIZIM
 
     cihaz = "".join(
         f'<article class="cihaz"><div class="cihaz-foto">{resim(g, b + " onarımı yapan teknisyen", "(max-width:640px) 92vw, (max-width:1020px) 46vw, 370px") or ik(k)}</div>'
@@ -244,17 +244,23 @@ def ana_sayfa():
     return bas(C.TITLE, C.DESC, "", robots, ek) + ust() + f'''
 <main id="ust">
 <!-- 1 · GİRİŞ -->
-<section class="hero" aria-labelledby="h1"><div class="kap">
-<div>
+<section class="hero" aria-labelledby="h1">
+<div class="hero-gorsel">{hero_gorsel}</div>
+<div class="kap">
+<div class="hero-ic">
 <span class="ust-etiket"><i></i>Adreste arıza tespiti ve onarım</span>
 <h1 id="h1">Beyaz eşya, kombi ve <em>klima servisi</em></h1>
 <p class="giris">Buzdolabı, çamaşır makinesi, bulaşık makinesi, fırın, kombi ve klima arızalarında teknisyenimiz adresinize gelir, arızayı tespit eder ve ücreti işlemden önce söyler.</p>
 <a class="hero-tel" href="{TEL_HREF}" data-olay="arama_tiklama" data-konum="hero-numara"><small>Servis hattı</small>{e(TEL_GOSTER)}</a>
 <div class="dugmeler">{ara}{yaz}</div>
-<ul class="guven"><li>{ik("onay")}Adreste arıza tespiti</li><li>{ik("onay")}Ücret işlemden önce</li><li>{ik("onay")}Onarım sonrası test</li></ul>
 </div>
-<div class="hero-gorsel">{hero_gorsel}</div>
 </div></section>
+<div class="kurumsal"><div class="kap">
+<div class="k-oge">{ik("anahtar")}<span><b>Adreste arıza tespiti</b>Teknisyen evinize gelir</span></div>
+<div class="k-oge">{ik("belge")}<span><b>Ücret işlemden önce</b>Onayınız olmadan işlem yok</span></div>
+<div class="k-oge">{ik("onay")}<span><b>Onarım sonrası test</b>Cihaz çalışırken teslim</span></div>
+<div class="k-oge">{ik("bagimsiz")}<span><b>Hafta sonu da randevu</b>Size uygun saatte</span></div>
+</div></div>
 
 <!-- 2 · HİZMETLER -->
 <section class="bolum beyaz" id="cihazlar" aria-labelledby="h-cihaz"><div class="kap">
