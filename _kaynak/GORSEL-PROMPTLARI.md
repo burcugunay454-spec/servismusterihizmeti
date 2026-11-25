@@ -1,46 +1,44 @@
-# Görsel promptları — Servis Müşteri Hizmeti
+# Görsel promptları — servismusterihizmeti.com.tr
 
 Üretilen görselleri `_kaynak/gorsel/` klasörüne **aşağıdaki dosya adlarıyla** kaydedin (jpg, png veya webp).
-Sonra `python -I _kaynak/build.py` çalıştırın: görseller webp'ye çevrilip sayfaya otomatik yerleşir.
+Sonra `python -I -X utf8 _kaynak/build.py` çalıştırın: görseller webp'ye çevrilip sayfaya otomatik yerleşir.
 
-## Her prompta eklenecek ortak kurallar (Google Ads politikası için önemli)
-Bu satırı her promptun sonuna ekleyin:
+## Her promptun sonuna eklenecek satır (Google Ads politikası için)
 
-> photorealistic, natural daylight, modern Turkish apartment interior, **no brand names, no logos, no text, no labels on appliances or clothing**, plain unbranded appliances, realistic hands, no watermark
+> photorealistic, natural daylight, modern Turkish home, no brand names, no logos, no text, no labels on appliances or clothing, plain unbranded appliances, realistic hands and fingers, no watermark
 
-- Cihazlarda ve tulumda **marka, logo ya da yazı olmamalı.** Marka logosu görünen görsel, Ads'te "yanıltıcı beyan / kabul edilemez iş uygulaması" redinin en sık sebebi.
-- Teknisyen kıyafeti: **düz lacivert veya petrol mavisi iş tulumu, logosuz.**
-- Görselleri sahte "ekibimiz" gibi sunmayacağız; alt metinler genel ("teknisyen ... inceliyor").
+- Cihazlarda ve tulumda marka, logo ya da yazı olmamalı. Logolu görsel Ads'te en sık ret sebebi.
+- Teknisyen: düz lacivert iş tulumu, logosuz.
 
 ---
 
-## 1. `hero` — ana görsel (yatay, 5:4 ya da 4:3, en az 1400 px genişlik)
-A professional appliance repair technician in a plain navy blue work uniform kneeling in front of an open front-loading washing machine in a bright modern kitchen, checking the drum with a small flashlight, tool bag on the floor beside him, calm and trustworthy atmosphere, shallow depth of field, warm natural light from a window
+## 1. `hero` — ana görsel (yatay 4:3 veya 5:4, en az 1400 px genişlik)
+A happy young mother and her little daughter (about 6 years old) in a bright modern kitchen, smiling and laughing together while unloading a white front-loading washing machine and putting clean laundry in a basket, a white two-door refrigerator, a built-in oven and a dishwasher visible in the background, warm natural window light, cozy and clean home atmosphere, candid lifestyle photo, shallow depth of field
 
 ## 2. `buzdolabi` — buzdolabı kartı (yatay 16:10, en az 800 px)
-Technician in a plain navy work uniform inspecting the back panel of a white two-door refrigerator in a home kitchen, using a multimeter, refrigerator pulled slightly away from the wall, clean and tidy setting
+Close-up of a male technician's hands in a plain navy work uniform repairing the back of a white refrigerator, holding a multimeter probe on the compressor wiring, refrigerator pulled away from the wall, sharp focus on hands and parts, shallow depth of field
 
 ## 3. `camasir` — çamaşır makinesi kartı (yatay 16:10)
-Close-up of a technician's hands in work gloves removing the drain pump filter from the bottom front panel of a white front-loading washing machine, small towel on the floor, bathroom/laundry room setting
+Close-up of a male technician in a plain navy uniform removing the drain pump filter at the bottom front of a white front-loading washing machine with a screwdriver, small towel on the floor, sharp focus on hands and filter, shallow depth of field
 
 ## 4. `bulasik` — bulaşık makinesi kartı (yatay 16:10)
-Technician in a plain navy uniform crouching at an open built-in dishwasher, holding the removed bottom filter, lower basket pulled out, modern kitchen cabinets around
+Close-up of a male technician's hands repairing the spray arm inside an open white built-in dishwasher, lower basket pulled out, holding the removed filter, sharp focus on hands, modern kitchen blurred in background
 
 ## 5. `firin` — fırın ve ocak kartı (yatay 16:10)
-Technician with a screwdriver servicing a built-in electric oven with the door open, inspecting the heating element, stainless steel kitchen, soft daylight
+Close-up of a male technician in a plain navy uniform replacing the heating element inside an open built-in electric oven, screwdriver in hand, stainless steel kitchen blurred behind, sharp focus on hands and oven interior
 
 ## 6. `kombi` — kombi kartı (yatay 16:10)
-Technician in a plain navy uniform checking the pressure gauge of a white wall-mounted gas combi boiler with the front cover removed, pipes visible below, utility room setting
+Close-up of a male technician's hands adjusting a valve under a white wall-mounted gas combi boiler with the front cover removed, pressure gauge and copper pipes visible, sharp focus on hands and gauge, utility room setting
 
 ## 7. `klima` — klima kartı (yatay 16:10)
-Technician standing on a small step ladder cleaning the filter of a white wall-mounted split air conditioner indoor unit in a bright living room, front cover lifted open
+Close-up of a male technician in a plain navy uniform pulling out and cleaning the filter of a white wall-mounted split air conditioner indoor unit, front cover lifted open, sharp focus on hands and filter, bright living room blurred behind
 
-## 8. `og-kapak` — paylaşım görseli (1200×630, yatay)
-Clean flat-lay composition on a light teal background: a professional tool bag, multimeter, screwdrivers, a small wrench and a smartphone, generous empty space on the left side, top-down view, soft shadows
+## 8. `og-kapak` — paylaşım görseli (isteğe bağlı, 1200×630)
+Clean flat-lay composition on a light teal background: a professional tool bag, multimeter, screwdrivers and a small wrench, generous empty space on the left side, top-down view, soft shadows
 
 ---
 
 ### Notlar
 - Dosya adları önemli: `hero.jpg`, `buzdolabi.jpg`, `camasir.jpg`, `bulasik.jpg`, `firin.jpg`, `kombi.jpg`, `klima.jpg`, `og-kapak.jpg`.
-- Görsel olmayan kartlarda sade çizgi ikon görünür; site görselsiz de düzgün çalışır.
-- Yüzü net görünen kişi istemiyorsanız promptlara `face not visible, shot from behind or hands only` ekleyin.
+- Teknisyen görsellerinde yüz görünmesin isterseniz sona `face not visible, hands only` ekleyin.
+- Görseli olmayan kartlarda sade ikon görünür; site görselsiz de düzgün çalışır.

@@ -218,7 +218,7 @@ def ana_sayfa():
     ara = f'<a class="btn btn-ara" href="{TEL_HREF}" data-olay="arama_tiklama" data-konum="hero">{ik("tel")}<span>Hemen Ara</span></a>'
     yaz = (f'<a class="btn btn-wa" href="{wa("Merhaba, cihazım için servis talebim var.")}" target="_blank" rel="noopener" data-olay="whatsapp_tiklama" data-konum="hero">{ik("wa")}<span>WhatsApp ile Yaz</span></a>'
            if WA_NO else f'<a class="btn btn-wa" href="#iletisim">{ik("wa")}<span>WhatsApp ile Yaz</span></a>')
-    hero_gorsel = resim("hero", "Teknisyen evde çamaşır makinesinin arızasını inceliyor", "(max-width:1020px) 92vw, 540px", oncelik=True) or HERO_CIZIM
+    hero_gorsel = resim("hero", "Mutfakta beyaz eşyaların önünde gülümseyen anne ve kızı", "(max-width:1020px) 92vw, 540px", oncelik=True) or HERO_CIZIM
 
     cihaz = "".join(
         f'<article class="cihaz"><div class="cihaz-foto">{resim(g, b + " onarımı yapan teknisyen", "(max-width:640px) 92vw, (max-width:1020px) 46vw, 370px") or ik(k)}</div>'
