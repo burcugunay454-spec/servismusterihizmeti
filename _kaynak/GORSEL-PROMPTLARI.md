@@ -13,7 +13,7 @@ Sonra `python -I -X utf8 _kaynak/build.py` çalıştırın: görseller webp'ye �
 ---
 
 ## 1. `hero` — ana görsel (yatay 4:3 veya 5:4, en az 1400 px genişlik)
-A happy young mother and her little daughter (about 6 years old) in a bright modern kitchen, smiling and laughing together while unloading a white front-loading washing machine and putting clean laundry in a basket, a white two-door refrigerator, a built-in oven and a dishwasher visible in the background, warm natural window light, cozy and clean home atmosphere, candid lifestyle photo, shallow depth of field
+Wide shot of a bright, spacious modern kitchen: in the foreground on the right, a male technician in a plain navy work uniform kneels in front of an open white front-loading washing machine, repairing it with a screwdriver, his open tool bag on the floor beside him; in the background on the left, a young mother and her little daughter (about 6 years old) stand near the kitchen island, smiling and watching calmly, small in the frame and softly out of focus; white refrigerator, built-in oven and dishwasher visible along the walls, warm natural window light, calm and trustworthy atmosphere, wide-angle documentary style, lots of space on the left side of the frame
 
 ## 2. `buzdolabi` — buzdolabı kartı (yatay 16:10, en az 800 px)
 Close-up of a male technician's hands in a plain navy work uniform repairing the back of a white refrigerator, holding a multimeter probe on the compressor wiring, refrigerator pulled away from the wall, sharp focus on hands and parts, shallow depth of field
