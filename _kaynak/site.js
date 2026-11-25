@@ -15,8 +15,11 @@ w.__cfTrap=function(e){e.preventDefault();try{localStorage.setItem('cf_trap','1'
    arama_tiklama, whatsapp_tiklama, form_gonderim. tel:/wa.me "Bağlantı tıklaması" tetikleyicisi KULLANMAYIN (tuzak linkleri de eşleşir). */
 d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-olay]');if(!a)return;
  if(a.getAttribute('href')==='#iletisim'){return}
- if(!bot()){(w.dataLayer=w.dataLayer||[]).push({event:a.getAttribute('data-olay'),konum:a.getAttribute('data-konum')||''})}
- w.__gtmY&&w.__gtmY()},true);
+ var ol=a.getAttribute('data-olay'),ko=a.getAttribute('data-konum')||'';
+ if(!bot()){(w.dataLayer=w.dataLayer||[]).push({event:ol,konum:ko});
+  if(w.gtag){gtag('event',ol,{konum:ko,transport_type:'beacon'});
+   if(ol==='arama_tiklama'&&w.__awTel){gtag('event','conversion',{send_to:w.__awTel,transport_type:'beacon'})}}}
+ w.__gtmY&&w.__gtmY();w.__gtY&&w.__gtY()},true);
 
 /* WhatsApp servis formu: bal küpü + süre kontrolü */
 var f=d.getElementById('servis-formu');

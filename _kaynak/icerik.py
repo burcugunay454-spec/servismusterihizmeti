@@ -17,6 +17,9 @@ ADRES = ""          # açık adres (varsa)
 SAAT = "Hafta içi ve hafta sonu, randevu ile"   # doğrulanmış çalışma saati yazın
 EPOSTA = ""
 GTM = ""            # örn. "GTM-XXXXXXX"
+GA4 = "G-ZC50CXV20Z"                              # Google Analytics 4 ölçüm kimliği (kelekramiz@gmail.com, mülk "servismusterihizmeti.com.tr")
+AW = "AW-18575593481"                             # Google Ads 200-368-6301
+AW_TEL = "AW-18575593481/k9YlCOX4qb8dEImgxJlF"    # Ads dönüşümü "Telefon tiklama" (Kişi, sayım: Bir)
 # ------------------------------------------------------------------
 
 ACIKLAMA_KISA = "Bağımsız özel teknik servis — hiçbir markanın yetkili servisi değildir."

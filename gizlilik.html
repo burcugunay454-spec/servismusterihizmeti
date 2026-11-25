@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="tr"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-
+<script>(function(w,d){w.dataLayer=w.dataLayer||[];w.gtag=function(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-ZC50CXV20Z');gtag('config','AW-18575593481');w.__awTel='AW-18575593481/k9YlCOX4qb8dEImgxJlF';var y=0;function f(){if(y)return;y=1;var j=d.createElement('script');j.async=1;j.src='https://www.googletagmanager.com/gtag/js?id=G-ZC50CXV20Z';d.head.appendChild(j)}w.__gtY=f;if(/[?&](gclid|gbraid|wbraid)=/.test(location.search)){f();return}['pointerdown','keydown','touchstart','scroll'].forEach(function(e){w.addEventListener(e,f,{once:true,passive:true})});w.addEventListener('load',function(){setTimeout(f,3500)})})(window,document);</script>
 <title>Gizlilik ve KVKK Aydınlatma Metni | Servis Müşteri Hizmeti</title>
 <meta name="description" content="Kişisel verilerin işlenmesi, çerezler ve haklarınız hakkında bilgilendirme.">
 <meta name="robots" content="index,follow">
@@ -194,8 +194,11 @@ w.__cfTrap=function(e){e.preventDefault();try{localStorage.setItem('cf_trap','1'
    arama_tiklama, whatsapp_tiklama, form_gonderim. tel:/wa.me "Bağlantı tıklaması" tetikleyicisi KULLANMAYIN (tuzak linkleri de eşleşir). */
 d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-olay]');if(!a)return;
  if(a.getAttribute('href')==='#iletisim'){return}
- if(!bot()){(w.dataLayer=w.dataLayer||[]).push({event:a.getAttribute('data-olay'),konum:a.getAttribute('data-konum')||''})}
- w.__gtmY&&w.__gtmY()},true);
+ var ol=a.getAttribute('data-olay'),ko=a.getAttribute('data-konum')||'';
+ if(!bot()){(w.dataLayer=w.dataLayer||[]).push({event:ol,konum:ko});
+  if(w.gtag){gtag('event',ol,{konum:ko,transport_type:'beacon'});
+   if(ol==='arama_tiklama'&&w.__awTel){gtag('event','conversion',{send_to:w.__awTel,transport_type:'beacon'})}}}
+ w.__gtmY&&w.__gtmY();w.__gtY&&w.__gtY()},true);
 
 /* WhatsApp servis formu: bal küpü + süre kontrolü */
 var f=d.getElementById('servis-formu');

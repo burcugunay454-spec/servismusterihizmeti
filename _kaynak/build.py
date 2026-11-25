@@ -118,11 +118,23 @@ def bas(baslik, aciklama, yol, robots, ek=""):
                "if(/[?&](gclid|gbraid|wbraid)=/.test(location.search)){f();return}"
                "['pointerdown','keydown','touchstart','scroll'].forEach(function(e){w.addEventListener(e,f,{once:true,passive:true})});"
                "w.addEventListener('load',function(){setTimeout(f,3500)})})(window,document,'" + C.GTM + "');</script>")
+    gtag = ""
+    if getattr(C, "GA4", "") or getattr(C, "AW", ""):
+        ilk = C.GA4 or C.AW
+        ayar = "".join(f"gtag('config','{k}');" for k in (C.GA4, C.AW) if k)
+        # gtag: reklam tıklamasında (gclid) hemen, diğer ziyarette ilk etkileşimde veya yüklemeden 3,5 sn sonra yüklenir
+        gtag = ("<script>(function(w,d){w.dataLayer=w.dataLayer||[];w.gtag=function(){dataLayer.push(arguments)};"
+                "gtag('js',new Date());" + ayar + f"w.__awTel='{C.AW_TEL}';" +
+                "var y=0;function f(){if(y)return;y=1;var j=d.createElement('script');j.async=1;"
+                f"j.src='https://www.googletagmanager.com/gtag/js?id={ilk}';d.head.appendChild(j)}}w.__gtY=f;"
+                "if(/[?&](gclid|gbraid|wbraid)=/.test(location.search)){f();return}"
+                "['pointerdown','keydown','touchstart','scroll'].forEach(function(e){w.addEventListener(e,f,{once:true,passive:true})});"
+                "w.addEventListener('load',function(){setTimeout(f,3500)})})(window,document);</script>")
     og_resim = f'<meta property="og:image" content="{URL}img/og-kapak-1400.webp">' if "og-kapak" in GORSEL else ""
     return f'''<!doctype html>
 <html lang="tr"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-{gtm}
+{gtm}{gtag}
 <title>{e(baslik)}</title>
 <meta name="description" content="{e(aciklama)}">
 <meta name="robots" content="{robots}">
