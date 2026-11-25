@@ -257,7 +257,7 @@ def ana_sayfa():
 </div></section>
 <div class="kurumsal"><div class="kap">
 <div class="k-oge">{ik("anahtar")}<span><b>Adreste arıza tespiti</b>Teknisyen evinize gelir</span></div>
-<div class="k-oge">{ik("belge")}<span><b>Ücret işlemden önce</b>Onayınız olmadan işlem yok</span></div>
+<div class="k-oge">{ik("belge")}<span><b>Ücretlendirme</b>Onayınız olmadan işlem yok</span></div>
 <div class="k-oge">{ik("onay")}<span><b>Onarım sonrası test</b>Cihaz çalışırken teslim</span></div>
 <div class="k-oge">{ik("bagimsiz")}<span><b>Hafta sonu da randevu</b>Size uygun saatte</span></div>
 </div></div>
