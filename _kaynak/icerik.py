@@ -10,7 +10,7 @@ Kurallar (Google Ads "kabul edilemez iş uygulamaları" / yanıltıcı beyan):
 # ---------------- AYARLAR (yalnız burayı doldurun) ----------------
 FIRMA = "Servis Müşteri Hizmeti"
 ALAN = "https://servismusterihizmeti.com.tr"
-TEL = ""            # örn. "0532 123 45 67" — boşken site noindex ve yer tutucu numara
+TEL = "0 (232) 332 22 19"            # örn. "0532 123 45 67" — boşken site noindex ve yer tutucu numara
 WHATSAPP = ""       # boşsa TEL kullanılır
 UNVAN = ""          # resmi ticari unvan (varsa; Ads doğrulaması için önerilir)
 ADRES = ""          # açık adres (varsa)
