@@ -11,7 +11,7 @@ Kurallar (Google Ads "kabul edilemez iş uygulamaları" / yanıltıcı beyan):
 FIRMA = "Servis Müşteri Hizmeti"
 ALAN = "https://servismusterihizmeti.com.tr"
 TEL = "0 (232) 332 22 19"            # örn. "0532 123 45 67" — boşken site noindex ve yer tutucu numara
-WHATSAPP = ""       # boşsa TEL kullanılır
+WHATSAPP = "YOK"    # "YOK": WhatsApp düğmeleri ve form gizlenir; boşsa TEL kullanılır
 UNVAN = ""          # resmi ticari unvan (varsa; Ads doğrulaması için önerilir)
 ADRES = ""          # açık adres (varsa)
 SAAT = "Hafta içi ve hafta sonu, randevu ile"   # doğrulanmış çalışma saati yazın
@@ -47,7 +47,7 @@ BELIRTILER = [
 
 # 4. bölüm — süreç
 ADIMLAR = [
-    ("Arayın veya yazın", "Cihazın türünü, modelini ve gördüğünüz arızayı kısaca anlatın."),
+    ("Arayın", "Cihazın türünü, modelini ve gördüğünüz arızayı kısaca anlatın."),
     ("Randevu", "Size uygun gün ve saat birlikte belirlenir."),
     ("Adreste tespit", "Teknisyen cihazı inceler, arızayı ve yapılacak işlemi açıklar."),
     ("Ücret ve onay", "Ücret işlemden önce söylenir. Onay vermezseniz işlem yapılmaz."),
@@ -66,7 +66,7 @@ ILKELER = [
 SSS = [
     ("Hangi cihazlara bakıyorsunuz?", "Buzdolabı, çamaşır makinesi, bulaşık makinesi, fırın ve ocak gibi beyaz eşyalar ile kombi ve klimalara arıza, bakım ve onarım hizmeti veriyoruz."),
     ("Ücreti ne zaman öğrenirim?", "Arıza tespitinden sonra, işleme başlamadan önce. Ücret cihaza, arızaya ve gerekiyorsa değişecek parçaya göre belirlenir. Onay vermezseniz işlem yapılmaz."),
-    ("Adrese geliyor musunuz?", "Evet, randevu ile adreste servis veriyoruz. Arayarak ya da WhatsApp'tan adresinizi ve arızayı iletebilirsiniz."),
+    ("Adrese geliyor musunuz?", "Evet, randevu ile adreste servis veriyoruz. Arayarak adresinizi ve arızayı iletebilirsiniz."),
     ("Kombi ve klima bakımı ne zaman yapılmalı?", "Kombi için ısıtma sezonu başlamadan, klima için yoğun kullanım dönemi öncesinde yılda bir bakım genel olarak önerilir."),
     ("Kişisel bilgilerim nasıl kullanılıyor?", "Paylaştığınız ad, telefon ve adres yalnızca servis talebiniz için kullanılır. Ayrıntılar Gizlilik ve KVKK sayfamızdadır."),
 ]

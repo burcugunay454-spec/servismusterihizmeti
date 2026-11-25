@@ -108,6 +108,7 @@ p{margin:0 0 1em}.kap{width:min(1160px,100% - 32px);margin-inline:auto}
 .form input:focus,.form select:focus,.form textarea:focus{border-color:var(--pet);outline:none;background:#fff}
 .form textarea{min-height:96px;resize:vertical}.form .btn{width:100%;margin-top:16px}
 .form .kvkk{font-size:.8rem;color:var(--muted);margin:10px 0 0}
+.ara-kutu{background:linear-gradient(160deg,var(--pet),var(--lac));color:#fff;border-radius:var(--r);padding:28px;text-align:left}.ara-kutu h3{color:#fff;margin:14px 0 4px}.ara-kutu p{color:#c9dcf2;margin:0 0 10px}.ak-ikon{width:52px;height:52px;border-radius:14px;background:var(--amb);color:#1c1400;display:grid;place-items:center}.ak-ikon svg{width:26px;height:26px}.ak-no{display:block;font:800 1.7rem var(--fh);color:#fff;text-decoration:none;margin:4px 0 18px}.ara-kutu .btn{width:100%}
 .bal{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 /* alt */
 footer{background:var(--lac2);border-top:4px solid var(--pet);color:#9fb2ba;padding:46px 0 0;font-size:.92rem}

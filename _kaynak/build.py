@@ -17,7 +17,7 @@ TEL_E164 = ("+90" + rakam[-10:]) if len(rakam) >= 10 else ""
 TEL_GOSTER = C.TEL or "0 (5XX) XXX XX XX"
 TEL_HREF = f"tel:{TEL_E164}" if TEL_E164 else "#iletisim"
 wr = "".join(c for c in (C.WHATSAPP or C.TEL) if c.isdigit())
-WA_NO = ("90" + wr[-10:]) if len(wr) >= 10 else ""
+WA_NO = "" if C.WHATSAPP.strip().upper() == "YOK" else (("90" + wr[-10:]) if len(wr) >= 10 else "")
 YAYINDA = bool(TEL_E164 and C.ALAN)
 URL = C.ALAN.rstrip("/") + "/"
 
@@ -182,7 +182,7 @@ Marka garantisi kapsamındaki cihazlarınız için üreticinin yetkili servisine
 
 def yapiskan():
     w = (f'<a class="btn btn-wa" href="{wa("Merhaba, servis talebim var.")}" target="_blank" rel="noopener" data-olay="whatsapp_tiklama" data-konum="mobil">{ik("wa")}<span>WhatsApp</span></a>'
-         if WA_NO else f'<a class="btn btn-wa" href="#iletisim">{ik("wa")}<span>WhatsApp</span></a>')
+         if WA_NO else "")
     return f'<div class="yapiskan"><a class="btn btn-ara" href="{TEL_HREF}" data-olay="arama_tiklama" data-konum="mobil">{ik("tel")}<span>Hemen Ara</span></a>{w}</div>'
 
 
@@ -217,13 +217,13 @@ def ana_sayfa():
 
     ara = f'<a class="btn btn-ara" href="{TEL_HREF}" data-olay="arama_tiklama" data-konum="hero">{ik("tel")}<span>Hemen Ara</span></a>'
     yaz = (f'<a class="btn btn-wa" href="{wa("Merhaba, cihazım için servis talebim var.")}" target="_blank" rel="noopener" data-olay="whatsapp_tiklama" data-konum="hero">{ik("wa")}<span>WhatsApp ile Yaz</span></a>'
-           if WA_NO else f'<a class="btn btn-wa" href="#iletisim">{ik("wa")}<span>WhatsApp ile Yaz</span></a>')
+           if WA_NO else "")
     hero_gorsel = resim("hero", "Teknisyen mutfakta çamaşır makinesini tamir ediyor, arkada anne ve kızı", "100vw", oncelik=True) or HERO_CIZIM
 
     cihaz = "".join(
         f'<article class="cihaz"><div class="cihaz-foto">{resim(g, b + " onarımı yapan teknisyen", "(max-width:640px) 92vw, (max-width:1020px) 46vw, 370px") or ik(k)}</div>'
         f'<div class="cihaz-ic"><h3>{e(b)} Servisi</h3><p>{e(m)}</p>'
-        + (f'<a href="{wa("Merhaba, " + b.lower() + " için servis talebim var.")}" target="_blank" rel="noopener" data-olay="whatsapp_tiklama" data-konum="cihaz">Servis talebi gönder →</a>' if WA_NO else '<a href="#iletisim">Servis talebi gönder →</a>')
+        + (f'<a href="{wa("Merhaba, " + b.lower() + " için servis talebim var.")}" target="_blank" rel="noopener" data-olay="whatsapp_tiklama" data-konum="cihaz">Servis talebi gönder →</a>' if WA_NO else f'<a href="{TEL_HREF}" data-olay="arama_tiklama" data-konum="cihaz">Servis için arayın →</a>')
         + '</div></article>' for k, b, m, g in C.CIHAZLAR)
     belirti = "".join(f'<div class="belirti"><span class="no">{i}</span><h3>{e(b)}</h3><p>{e(m)}</p></div>' for i, (b, m) in enumerate(C.BELIRTILER, 1))
     surec = "".join(f'<li><h3>{e(b)}</h3><p>{e(m)}</p></li>' for b, m in C.ADIMLAR)
@@ -240,6 +240,24 @@ def ana_sayfa():
     firma = "".join(f"<dt>{a}</dt><dd>{b}</dd>" for a, b in firma_satir)
     wa_kanal = (f'<a class="kanal wa" href="{wa("Merhaba, servis talebim var.")}" target="_blank" rel="noopener" data-olay="whatsapp_tiklama" data-konum="iletisim"><span class="kk">{ik("wa")}</span><span><small>WhatsApp</small><b>Mesaj gönderin</b></span></a>'
                 if WA_NO else "")
+    tel_kanal = (f'<a class="kanal" href="{TEL_HREF}" data-olay="arama_tiklama" data-konum="iletisim"><span class="kk">{ik("tel")}</span><span><small>Telefon</small><b>{e(TEL_GOSTER)}</b></span></a>' if WA_NO else "")
+    if WA_NO:
+        ilt_metin = "Arayın ya da formu doldurun; mesajınız WhatsApp'ta hazır açılır, siz yalnızca gönderirsiniz."
+        form_blok = f'''<form class="form" id="servis-formu" data-wa="{WA_NO}" novalidate>
+<h3>WhatsApp ile servis talebi</h3><p>Bilgiler yalnızca servis talebiniz için kullanılır.</p>
+<label for="f-ad">Adınız</label><input id="f-ad" name="ad" autocomplete="name" required>
+<label for="f-cihaz">Cihaz</label><select id="f-cihaz" name="cihaz" required><option value="">Seçin</option>{secenek}<option>Diğer</option></select>
+<label for="f-ariza">Arıza (kısaca)</label><textarea id="f-ariza" name="ariza" placeholder="Örn. su boşaltmıyor, ekranda hata kodu var"></textarea>
+<label for="f-semt">Semt / mahalle</label><input id="f-semt" name="semt" autocomplete="address-level3">
+<div class="bal" aria-hidden="true"><label for="f-web">Web siteniz</label><input id="f-web" name="web_sitesi" tabindex="-1" autocomplete="off"></div>
+<button class="btn btn-wa" type="submit">{ik("wa")}<span>WhatsApp ile Gönder</span></button>
+<p class="kvkk">Göndererek <a href="gizlilik.html">Gizlilik ve KVKK aydınlatma metnini</a> okuduğunuzu kabul edersiniz.</p>
+</form>'''
+    else:
+        ilt_metin = "Servis talebiniz için bizi arayın; cihazınızı, arızayı ve adresinizi kısaca anlatın, randevu birlikte planlansın."
+        form_blok = f'''<div class="ara-kutu"><span class="ak-ikon">{ik("tel")}</span><h3>Servis hattı</h3><p>Hafta içi ve hafta sonu, randevu ile.</p>
+<a class="ak-no" href="{TEL_HREF}" data-olay="arama_tiklama" data-konum="iletisim-kutu">{e(TEL_GOSTER)}</a>
+<a class="btn btn-ara" href="{TEL_HREF}" data-olay="arama_tiklama" data-konum="iletisim-dugme">{ik("tel")}<span>Hemen Ara</span></a></div>'''
 
     return bas(C.TITLE, C.DESC, "", robots, ek) + ust() + f'''
 <main id="ust">
@@ -282,7 +300,7 @@ def ana_sayfa():
 <div class="bas"><span class="ust-etiket"><i></i>Nasıl çalışırız?</span><h2 id="h-sur">Beş adımda şeffaf servis</h2>
 <p>Arızayı ve ücreti öğrenmeden hiçbir işlem yapılmaz.</p></div>
 <ol class="surec">{surec}</ol>
-<div class="surec-alt"><p>Randevu için arayın ya da WhatsApp'tan cihazınızı ve arızayı yazın.</p><div class="dugmeler">{ara.replace('data-konum="hero"', 'data-konum="surec"')}</div></div>
+<div class="surec-alt"><p>Randevu için arayın; cihazınızı ve arızayı kısaca anlatın.</p><div class="dugmeler">{ara.replace('data-konum="hero"', 'data-konum="surec"')}</div></div>
 </div></section>
 
 <!-- 5 · İLKELER -->
@@ -301,23 +319,13 @@ def ana_sayfa():
 <!-- 7 · İLETİŞİM -->
 <section class="bolum beyaz" id="iletisim" aria-labelledby="h-ilt"><div class="kap">
 <div class="bas"><span class="ust-etiket"><i></i>İletişim</span><h2 id="h-ilt">Servis talebi oluşturun</h2>
-<p>Arayın ya da formu doldurun; mesajınız WhatsApp'ta hazır açılır, siz yalnızca gönderirsiniz.</p></div>
+<p>{ilt_metin}</p></div>
 <div class="iletisim">
 <div>
-<a class="kanal" href="{TEL_HREF}" data-olay="arama_tiklama" data-konum="iletisim"><span class="kk">{ik("tel")}</span><span><small>Telefon</small><b>{e(TEL_GOSTER)}</b></span></a>
-{wa_kanal}
+{tel_kanal}{wa_kanal}
 <div class="firma"><dl>{firma}</dl></div>
 </div>
-<form class="form" id="servis-formu" data-wa="{WA_NO}" novalidate>
-<h3>WhatsApp ile servis talebi</h3><p>Bilgiler yalnızca servis talebiniz için kullanılır.</p>
-<label for="f-ad">Adınız</label><input id="f-ad" name="ad" autocomplete="name" required>
-<label for="f-cihaz">Cihaz</label><select id="f-cihaz" name="cihaz" required><option value="">Seçin</option>{secenek}<option>Diğer</option></select>
-<label for="f-ariza">Arıza (kısaca)</label><textarea id="f-ariza" name="ariza" placeholder="Örn. su boşaltmıyor, ekranda hata kodu var"></textarea>
-<label for="f-semt">Semt / mahalle</label><input id="f-semt" name="semt" autocomplete="address-level3">
-<div class="bal" aria-hidden="true"><label for="f-web">Web siteniz</label><input id="f-web" name="web_sitesi" tabindex="-1" autocomplete="off"></div>
-<button class="btn btn-wa" type="submit">{ik("wa")}<span>WhatsApp ile Gönder</span></button>
-<p class="kvkk">Göndererek <a href="gizlilik.html">Gizlilik ve KVKK aydınlatma metnini</a> okuduğunuzu kabul edersiniz.</p>
-</form>
+{form_blok}
 </div>
 </div></section>
 </main>
@@ -332,13 +340,13 @@ def gizlilik():
 <h1>Gizlilik ve KVKK Aydınlatma Metni</h1>
 <p>Bu metin, 6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında veri sorumlusu sıfatıyla {kim} tarafından hazırlanmıştır.</p>
 <h2>Hangi verileri işliyoruz?</h2>
-<p>Telefon, WhatsApp veya servis formu ile bize ilettiğiniz ad, telefon numarası, adres/semt ve cihaz-arıza bilgileri.</p>
+<p>Telefonla{' veya WhatsApp ile' if WA_NO else ''} bize ilettiğiniz ad, telefon numarası, adres/semt ve cihaz-arıza bilgileri.</p>
 <h2>Hangi amaçla?</h2>
 <p>Servis talebinizi almak, randevu oluşturmak, adreste hizmet vermek ve yapılan işleme ilişkin kayıt tutmak. Verileriniz pazarlama amacıyla üçüncü kişilere satılmaz veya kiralanmaz.</p>
 <h2>Hukuki sebep</h2>
 <p>Bir sözleşmenin kurulması veya ifasıyla doğrudan ilgili olması ve kanunlarda öngörülen kayıt yükümlülükleri (KVKK md. 5/2-a, c, ç).</p>
 <h2>Aktarım</h2>
-<p>Form gönderdiğinizde mesajınız sizin cihazınızda WhatsApp uygulamasında açılır; gönderim WhatsApp hizmet şartlarına tabidir. Sitede ziyaret ve reklam ölçümü için Google araçları (Google Tag Manager, Google Analytics, Google Ads) ve sahte tıklama önleme amacıyla güvenlik araçları kullanılabilir; bu araçlar çerez ve benzeri teknolojilerle cihaz bilgisi toplayabilir.</p>
+<p>{'Form gönderdiğinizde mesajınız sizin cihazınızda WhatsApp uygulamasında açılır; gönderim WhatsApp hizmet şartlarına tabidir. ' if WA_NO else ''}Sitede ziyaret ve reklam ölçümü için Google araçları (Google Tag Manager, Google Analytics, Google Ads) ve sahte tıklama önleme amacıyla güvenlik araçları kullanılabilir; bu araçlar çerez ve benzeri teknolojilerle cihaz bilgisi toplayabilir.</p>
 <h2>Haklarınız</h2>
 <p>KVKK md. 11 uyarınca verilerinizin işlenip işlenmediğini öğrenme, düzeltilmesini veya silinmesini isteme ve itiraz etme haklarına sahipsiniz. Başvurularınızı {e(TEL_GOSTER)} numarasından{(" veya " + e(C.EPOSTA) + " adresinden") if C.EPOSTA else ""} iletebilirsiniz.</p>
 <h2>Bağımsız servis bilgilendirmesi</h2>
