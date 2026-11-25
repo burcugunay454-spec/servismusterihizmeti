@@ -2,7 +2,7 @@
 """Servis Müşteri Hizmeti — tüm ayarlar ve metinler.
 Kurallar (Google Ads "kabul edilemez iş uygulamaları" / yanıltıcı beyan):
   * Hiçbir marka adı ve logosu yazılmaz/gösterilmez; "yetkili", "resmi", "orijinal" denmez.
-  * "Bağımsız özel servis, hiçbir markanın yetkili servisi değildir" açıklaması üstte ve altta görünür.
+  * "Bağımsız özel servis, hiçbir markanın yetkili servisi değildir" açıklaması sayfanın en altında (footer şeridi) görünür.
   * Doğrulanmamış iddia (yıl, garanti süresi, dakika, fiyat, yorum, puan) yazılmaz.
   * Ücret işlem öncesi bildirilir; onay olmadan işlem yapılmaz.
 """
@@ -21,7 +21,7 @@ GTM = ""            # örn. "GTM-XXXXXXX"
 
 ACIKLAMA_KISA = "Bağımsız özel teknik servis — hiçbir markanın yetkili servisi değildir."
 
-TITLE = "Beyaz Eşya, Kombi ve Klima Teknik Servisi | " + FIRMA
+TITLE = "Beyaz Eşya, Kombi ve Klima Servisi | " + FIRMA
 DESC = ("Buzdolabı, çamaşır makinesi, bulaşık makinesi, fırın, kombi ve klima arızalarında adreste "
         "arıza tespiti ve onarım. Ücret işlemden önce bildirilir, onayınız olmadan işlem yapılmaz.")
 

@@ -142,8 +142,7 @@ def bas(baslik, aciklama, yol, robots, ek=""):
 
 def ust(ana=True):
     on = "" if ana else "./"
-    return f'''<div class="serit" role="note"><b>Bağımsız özel teknik servis.</b> Hiçbir markanın yetkili servisi değildir.</div>
-<header class="ust"><div class="kap">
+    return f'''<header class="ust"><div class="kap">
 <a class="logo" href="{'#ust' if ana else './'}" aria-label="{e(C.FIRMA)} ana sayfa"><span class="logo-isaret">{ik("anahtar")}</span><span>{e(C.FIRMA)}<small>Beyaz eşya · Kombi · Klima</small></span></a>
 <button class="menu-ac" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="menu">{ik("menu")}</button>
 <nav class="menu" id="menu" aria-label="Ana menü">
@@ -177,7 +176,8 @@ def alt():
 <div><h3>Sayfalar</h3><ul><li><a href="./#cihazlar">Hizmetler</a></li><li><a href="./#sss">Sık sorulanlar</a></li><li><a href="gizlilik.html">Gizlilik ve KVKK</a></li></ul></div>
 <p class="yasal">{e(C.FIRMA)}{unvan} bağımsız bir özel teknik servistir; hiçbir üretici markanın yetkili servisi, bayisi veya müşteri hizmetleri hattı değildir.
 Marka garantisi kapsamındaki cihazlarınız için üreticinin yetkili servisine başvurabilirsiniz. © <span id="yil">2026</span> {e(C.FIRMA)}</p>
-</div></footer>'''
+</div>
+<div class="serit" role="note"><b>Bağımsız özel servis</b> Hiçbir markanın yetkili servisi değildir.</div></footer>'''
 
 
 def yapiskan():
@@ -246,15 +246,14 @@ def ana_sayfa():
 <!-- 1 · GİRİŞ -->
 <section class="hero" aria-labelledby="h1"><div class="kap">
 <div>
-<span class="ust-etiket"><i></i>Beyaz eşya · Kombi · Klima</span>
-<h1 id="h1">Arızalı cihazınız için <em>adreste teknik servis</em></h1>
+<span class="ust-etiket"><i></i>Adreste arıza tespiti ve onarım</span>
+<h1 id="h1">Beyaz eşya, kombi ve <em>klima servisi</em></h1>
 <p class="giris">Buzdolabı, çamaşır makinesi, bulaşık makinesi, fırın, kombi ve klima arızalarında teknisyenimiz adresinize gelir, arızayı tespit eder ve ücreti işlemden önce söyler.</p>
 <a class="hero-tel" href="{TEL_HREF}" data-olay="arama_tiklama" data-konum="hero-numara"><small>Servis hattı</small>{e(TEL_GOSTER)}</a>
 <div class="dugmeler">{ara}{yaz}</div>
 <ul class="guven"><li>{ik("onay")}Adreste arıza tespiti</li><li>{ik("onay")}Ücret işlemden önce</li><li>{ik("onay")}Onarım sonrası test</li></ul>
 </div>
-<div class="hero-gorsel">{hero_gorsel}
-<div class="hero-not"><span class="nk">{ik("bagimsiz")}</span><span><b>Bağımsız özel servis</b>Hiçbir markanın yetkili servisi değildir.</span></div></div>
+<div class="hero-gorsel">{hero_gorsel}</div>
 </div></section>
 
 <!-- 2 · HİZMETLER -->
