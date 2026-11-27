@@ -11,6 +11,7 @@ KAYNAK = os.path.dirname(os.path.abspath(__file__))
 KOK = os.path.dirname(KAYNAK)
 sys.path.insert(0, KAYNAK)
 import icerik as C  # noqa: E402
+import firmalar as F  # noqa: E402
 
 rakam = "".join(c for c in C.TEL if c.isdigit())
 TEL_E164 = ("+90" + rakam[-10:]) if len(rakam) >= 10 else ""
@@ -158,7 +159,7 @@ def ust(ana=True):
 <a class="logo" href="{'#ust' if ana else './'}" aria-label="{e(C.FIRMA)} ana sayfa"><span class="logo-isaret">{ik("anahtar")}</span><span>{e(C.FIRMA)}<small>Beyaz eşya · Kombi · Klima</small></span></a>
 <button class="menu-ac" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="menu">{ik("menu")}</button>
 <nav class="menu" id="menu" aria-label="Ana menü">
-<a href="{on}#cihazlar">Hizmetler</a><a href="{on}#belirtiler">Arıza Rehberi</a><a href="{on}#surec">Süreç</a><a href="{on}#ilkeler">İlkelerimiz</a><a href="{on}#sss">SSS</a><a href="{on}#iletisim">İletişim</a>
+<a href="{on}#cihazlar">Hizmetler</a><a href="{on}#belirtiler">Arıza Rehberi</a><a href="{on}#surec">Süreç</a><a href="{on}#ilkeler">İlkelerimiz</a><a href="{on}#sss">SSS</a><a href="{on}#iletisim">İletişim</a><a href="firma-rehberi.html">Firma Rehberi</a>
 <a class="btn btn-ara btn-kucuk" href="{TEL_HREF}" data-olay="arama_tiklama" data-konum="menu">{ik("tel")}<span>{e(TEL_GOSTER)}</span></a>
 </nav></div></header>'''
 
@@ -185,7 +186,7 @@ def alt():
 <div><div class="logo"><span class="logo-isaret">{ik("anahtar")}</span><span>{e(C.FIRMA)}<small>Beyaz eşya · Kombi · Klima</small></span></div>
 <p>Beyaz eşya, kombi ve klima için adreste arıza tespiti, onarım ve bakım.</p></div>
 <div><h3>İletişim</h3><ul>{li}<li>{e(C.SAAT)}</li></ul></div>
-<div><h3>Sayfalar</h3><ul><li><a href="./#cihazlar">Hizmetler</a></li><li><a href="./#sss">Sık sorulanlar</a></li><li><a href="gizlilik.html">Gizlilik ve KVKK</a></li></ul></div>
+<div><h3>Sayfalar</h3><ul><li><a href="./#cihazlar">Hizmetler</a></li><li><a href="./#sss">Sık sorulanlar</a></li><li><a href="firma-rehberi.html">Firma rehberi</a></li><li><a href="gizlilik.html">Gizlilik ve KVKK</a></li></ul></div>
 <p class="yasal">{e(C.FIRMA)}{unvan} bağımsız bir özel teknik servistir; hiçbir üretici markanın yetkili servisi, bayisi veya müşteri hizmetleri hattı değildir.
 Marka garantisi kapsamındaki cihazlarınız için üreticinin yetkili servisine başvurabilirsiniz. © <span id="yil">2026</span> {e(C.FIRMA)}</p>
 </div>
@@ -355,6 +356,8 @@ def gizlilik():
 <p>Telefonla{' veya WhatsApp ile' if WA_NO else ''} bize ilettiğiniz ad, telefon numarası, adres/semt ve cihaz-arıza bilgileri.</p>
 <h2>Hangi amaçla?</h2>
 <p>Servis talebinizi almak, randevu oluşturmak, adreste hizmet vermek ve yapılan işleme ilişkin kayıt tutmak. Verileriniz pazarlama amacıyla üçüncü kişilere satılmaz veya kiralanmaz.</p>
+<h2>Firma rehberi başvuruları</h2>
+<p>Firma rehberi başvuru formunda ilettiğiniz firma adı, yetkili adı, telefon, e-posta, adres ve hizmet bilgileri başvurunun değerlendirilmesi ve onaylanırsa firmanın rehberde yayınlanması amacıyla işlenir. Form, e-posta iletim hizmeti FormSubmit (formsubmit.co) aracılığıyla bize e-posta olarak ulaşır. Rehberde yalnızca firma adı, il/ilçe, hizmetler, firma telefonu ve isterseniz adres, web sitesi ve tanıtım metni yayınlanır; yetkili adı ve e-posta yayınlanmaz.</p>
 <h2>Hukuki sebep</h2>
 <p>Bir sözleşmenin kurulması veya ifasıyla doğrudan ilgili olması ve kanunlarda öngörülen kayıt yükümlülükleri (KVKK md. 5/2-a, c, ç).</p>
 <h2>Aktarım</h2>
@@ -365,6 +368,145 @@ def gizlilik():
 <p>{e(C.FIRMA)} bağımsız bir özel teknik servistir; hiçbir üretici markanın yetkili servisi, bayisi veya müşteri hizmetleri hattı değildir.</p>
 <p><a class="btn btn-cizgi btn-kucuk" href="./">← Ana sayfaya dön</a></p>
 </article></main>''' + alt() + yapiskan() + js() + "\n</body></html>\n"
+
+
+REHBER_SSS = [
+    ("Rehbere kayıt ücretli mi?", "Hayır. Teknik servis firmaları başvuru formunu doldurarak ücretsiz başvurabilir."),
+    ("Başvurum ne zaman yayına girer?", "Başvurular tek tek incelenir; firma bilgileri ve telefon numarası doğrulandıktan sonra rehbere eklenir."),
+    ("Rehberdeki firmalar yetkili servis mi?", "Rehber, bağımsız teknik servis firmalarının iletişim bilgilerini bir araya getirir. Bir firmanın bir markanın yetkili servisi olup olmadığını üreticinin resmi sitesinden kontrol edebilirsiniz."),
+    ("Bilgilerimi nasıl güncellerim veya kaldırırım?", "Formu 'güncelleme' notuyla yeniden gönderin ya da bizi arayın; bilgileriniz düzeltilir veya rehberden kaldırılır."),
+    ("Rehberdeki bir firmadan şikâyetim var.", "Hizmet doğrudan ilgili firma tarafından verilir. Yaşadığınız sorunu bize iletebilirsiniz; gerekli görülürse firma rehberden çıkarılır. Tüketici hakları için Tüketici Hakem Heyeti'ne de başvurabilirsiniz."),
+]
+
+SECIM = [
+    ("belge", "Ücreti önceden sorun", "Servis ücreti, parça ve işçilik bedelini işlem başlamadan öğrenin; onay vermeden işlem yaptırmayın."),
+    ("bagimsiz", "Yetkili servis iddiasını kontrol edin", "Marka adını kullanan bir firmanın yetkili olup olmadığını üreticinin resmi sitesinden doğrulayın."),
+    ("parca", "Değişen parçayı isteyin", "Değiştirilen eski parçayı görmek ve yeni parçanın garantisini sormak hakkınızdır."),
+    ("onay", "Fatura ve garanti alın", "Yapılan iş için fatura veya servis fişi isteyin; onarım garantisinin süresini yazılı alın."),
+    ("konum", "Yakındaki firmayı tercih edin", "Size yakın firma daha hızlı gelir; ilçenizi seçerek rehberde arayın."),
+    ("saat", "Randevuyu netleştirin", "Teknisyenin geliş saatini ve size kimin geleceğini önceden öğrenin."),
+]
+
+
+def firma_rehberi():
+    kayit = [dict(f, kategoriler=list(f.get("kategoriler", []))) for f in F.FIRMALAR]
+    il_sec = "".join(f"<option>{e(i)}</option>" for i in F.ILLER)
+    kat_sec = "".join(f"<option>{e(k)}</option>" for k in F.KATEGORILER)
+    kat_kutu = "".join(f'<label class="rh-kutu"><input type="checkbox" name="kategoriler" value="{e(k)}"><span>{e(k)}</span></label>' for k in F.KATEGORILER)
+    secim = "".join(f'<div class="ilke">{ik(k)}<h3>{e(b)}</h3><p>{e(m)}</p></div>' for k, b, m in SECIM)
+    sss = "".join(f'<details><summary>{e(s)}</summary><p>{e(c)}</p></details>' for s, c in REHBER_SSS)
+    baslik = f"Teknik Servis Firma Rehberi | {C.FIRMA}"
+    aciklama = ("Beyaz eşya, kombi ve klima teknik servis firmaları rehberi: il, ilçe ve hizmete göre firma arayın. "
+                "Teknik servis firmanızı rehbere ücretsiz ekleyin.")
+    sema = [{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Teknik Servis Firma Rehberi", "url": URL + "firma-rehberi.html",
+             "inLanguage": "tr-TR", "isPartOf": {"@type": "WebSite", "name": C.FIRMA, "url": URL}},
+            {"@context": "https://schema.org", "@type": "FAQPage",
+             "mainEntity": [{"@type": "Question", "name": s, "acceptedAnswer": {"@type": "Answer", "text": c}} for s, c in REHBER_SSS]}]
+    if kayit:
+        sema.append({"@context": "https://schema.org", "@type": "ItemList", "itemListElement": [
+            {"@type": "ListItem", "position": i, "item": {"@type": "LocalBusiness", "name": f["ad"], "telephone": f.get("tel", ""),
+                                                          "address": {"@type": "PostalAddress", "addressLocality": f.get("ilce", ""), "addressRegion": f.get("il", ""), "addressCountry": "TR"}}}
+            for i, f in enumerate(kayit, 1)]})
+    ek = "".join(f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False)}</script>' for s in sema)
+    robots = "index,follow" if YAYINDA else "noindex,nofollow"
+    form_url = f"https://formsubmit.co/{F.FORM_EPOSTA}"
+    sonraki = URL + "firma-rehberi.html?gonderildi=1#basvuru"
+    veri = json.dumps(kayit, ensure_ascii=False).replace("</", "<\\/")
+    return bas(baslik, aciklama, "firma-rehberi.html", robots, ek) + ust(False) + f'''
+<main id="ust">
+<section class="bolum koyu rh-giris" aria-labelledby="rh-h1"><div class="kap">
+<div class="bas"><span class="ust-etiket"><i></i>Firma rehberi</span>
+<h1 id="rh-h1">Teknik servis firma rehberi</h1>
+<p>Beyaz eşya, kombi ve klima servis firmalarını il, ilçe ve hizmete göre bulun. Firmanız rehberde yoksa ücretsiz ekleyin.</p></div>
+<form class="rh-ara" id="rh-ara" role="search" onsubmit="return false">
+<label><span>İl</span><select id="rh-il"><option value="">Tüm iller</option>{il_sec}</select></label>
+<label><span>Hizmet</span><select id="rh-kat"><option value="">Tüm hizmetler</option>{kat_sec}</select></label>
+<label class="rh-genis"><span>Firma adı veya ilçe</span><input id="rh-q" type="search" placeholder="Örn. Bornova, kombi servisi" autocomplete="off"></label>
+<a class="btn btn-ara" href="#basvuru">{ik("belge")}<span>Firmanızı ekleyin</span></a>
+</form>
+</div></section>
+
+<section class="bolum" id="liste" aria-labelledby="rh-h-liste"><div class="kap">
+<div class="rh-ust"><h2 id="rh-h-liste">Kayıtlı firmalar</h2><p id="rh-sayi" aria-live="polite"></p></div>
+<div class="rh-liste" id="rh-liste"></div>
+<div class="rh-bos" id="rh-bos" hidden><span class="ak-ikon">{ik("konum")}</span><h3>Bu aramada kayıtlı firma yok</h3>
+<p>Rehber yeni; firmalar başvuru ve doğrulamadan sonra eklenir. Bölgenizde teknik servis firması işletiyorsanız ilk siz ekleyin.</p>
+<a class="btn btn-ara" href="#basvuru">{ik("belge")}<span>Firmanızı ücretsiz ekleyin</span></a></div>
+</div></section>
+
+<section class="bolum beyaz" id="secim" aria-labelledby="rh-h-secim"><div class="kap">
+<div class="bas"><span class="ust-etiket"><i></i>Servis seçme rehberi</span><h2 id="rh-h-secim">Teknik servis seçerken dikkat edin</h2>
+<p>Rehberden ya da başka bir yerden servis çağırırken bu altı noktayı kontrol edin.</p></div>
+<div class="izgara ilkeler rh-secim">{secim}</div>
+</div></section>
+
+<section class="bolum" id="basvuru" aria-labelledby="rh-h-form"><div class="kap">
+<div class="bas"><span class="ust-etiket"><i></i>Ücretsiz kayıt</span><h2 id="rh-h-form">Firmanızı rehbere ekleyin</h2>
+<p>Formu doldurun; bilgileriniz kontrol edildikten sonra firmanız rehberde yayınlanır. Yalnızca gerçek, faaliyette olan teknik servis firmaları kabul edilir.</p></div>
+<div class="rh-form-alan">
+<div class="rh-kriter"><h3>Rehbere giriş koşulları</h3><ul>
+<li>{ik("onay")}Faaliyette olan, ulaşılabilir bir teknik servis firması olmak</li>
+<li>{ik("onay")}Telefon numarasının firmaya ait olması (arayarak doğrulanır)</li>
+<li>{ik("onay")}Bir markanın yetkili servisi değilseniz bunu ima etmemek</li>
+<li>{ik("onay")}Ücret ve garanti konusunda müşteriyi önceden bilgilendirmek</li>
+</ul><p class="rh-not">Başvuru ücretsizdir. Bilgileriniz yalnızca rehber kaydı için kullanılır.</p></div>
+<form class="form rh-form" id="rh-form" action="{form_url}" method="POST">
+<div class="rh-tamam" id="rh-tamam" hidden>{ik("onay")}<b>Başvurunuz alındı.</b> Bilgileriniz kontrol edildikten sonra sizinle iletişime geçeceğiz.</div>
+<input type="hidden" name="_subject" value="Yeni firma rehberi başvurusu - {e(C.FIRMA)}">
+<input type="hidden" name="_next" value="{sonraki}">
+<input type="hidden" name="_template" value="table">
+<div class="bal" aria-hidden="true"><label for="rh-honey">Boş bırakın</label><input id="rh-honey" type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
+<div class="rh-iki">
+<div><label for="rh-f-ad">Firma adı *</label><input id="rh-f-ad" name="Firma adı" required maxlength="80" autocomplete="organization"></div>
+<div><label for="rh-f-yetkili">Yetkili adı soyadı *</label><input id="rh-f-yetkili" name="Yetkili" required maxlength="60" autocomplete="name"></div>
+<div><label for="rh-f-tel">Telefon *</label><input id="rh-f-tel" name="Telefon" type="tel" required maxlength="20" autocomplete="tel" placeholder="0 (5XX) XXX XX XX"></div>
+<div><label for="rh-f-eposta">E-posta</label><input id="rh-f-eposta" name="E-posta" type="email" maxlength="80" autocomplete="email"></div>
+<div><label for="rh-f-il">İl *</label><select id="rh-f-il" name="İl" required><option value="">Seçin</option>{il_sec}</select></div>
+<div><label for="rh-f-ilce">İlçe *</label><input id="rh-f-ilce" name="İlçe" required maxlength="40"></div>
+</div>
+<fieldset class="rh-kat"><legend>Verdiğiniz hizmetler *</legend>{kat_kutu}</fieldset>
+<label for="rh-f-adres">Açık adres</label><input id="rh-f-adres" name="Adres" maxlength="160" autocomplete="street-address">
+<label for="rh-f-web">Web sitesi</label><input id="rh-f-web" name="Web sitesi" type="url" maxlength="100" placeholder="https://">
+<label for="rh-f-unvan">Ticari unvan / vergi no</label><input id="rh-f-unvan" name="Ticari unvan - vergi no" maxlength="120">
+<label for="rh-f-acik">Firmanızı kısaca tanıtın</label><textarea id="rh-f-acik" name="Tanıtım" maxlength="200" placeholder="En fazla 200 karakter"></textarea>
+<label class="rh-onay"><input type="checkbox" name="KVKK onayı" value="Evet" required><span><a href="gizlilik.html">Gizlilik ve KVKK aydınlatma metnini</a> okudum; firma bilgilerimin rehberde yayınlanmasını kabul ediyorum. *</span></label>
+<p class="rh-hata" id="rh-hata" hidden>Lütfen en az bir hizmet seçin.</p>
+<button class="btn btn-ara" type="submit">{ik("belge")}<span>Başvuruyu gönder</span></button>
+</form>
+</div>
+</div></section>
+
+<section class="bolum beyaz" id="sss" aria-labelledby="rh-h-sss"><div class="kap dar">
+<div class="bas"><span class="ust-etiket"><i></i>Sık sorulan sorular</span><h2 id="rh-h-sss">Firma rehberi hakkında</h2></div>
+<div class="sss">{sss}</div>
+</div></section>
+</main>
+''' + alt() + yapiskan() + js() + f'''<script>(function(){{
+var F={veri},L=document.getElementById('rh-liste'),B=document.getElementById('rh-bos'),S=document.getElementById('rh-sayi'),
+il=document.getElementById('rh-il'),kat=document.getElementById('rh-kat'),q=document.getElementById('rh-q');
+function n(t){{return(t||'').toLocaleLowerCase('tr')}}
+function esc(t){{return String(t||'').replace(/[&<>"]/g,function(c){{return{{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}}[c]}})}}
+function ciz(){{var a=F.filter(function(f){{return(!il.value||f.il===il.value)&&(!kat.value||(f.kategoriler||[]).indexOf(kat.value)>-1)&&
+(!q.value||n([f.ad,f.il,f.ilce,(f.kategoriler||[]).join(' '),f.aciklama].join(' ')).indexOf(n(q.value))>-1)}});
+L.innerHTML=a.map(function(f){{var t=(f.tel||'').replace(/\\D/g,'');t=t.length>=10?'+90'+t.slice(-10):'';
+return'<article class="rh-firma"><h3>'+esc(f.ad)+'</h3><p class="rh-yer">'+esc(f.ilce)+(f.ilce?', ':'')+esc(f.il)+'</p>'+
+'<p class="rh-etiketler">'+(f.kategoriler||[]).map(function(k){{return'<span>'+esc(k)+'</span>'}}).join('')+'</p>'+
+(f.aciklama?'<p>'+esc(f.aciklama)+'</p>':'')+(f.adres?'<p class="rh-adres">'+esc(f.adres)+'</p>':'')+
+'<div class="rh-dugme">'+(t?'<a class="btn btn-cizgi btn-kucuk" href="tel:'+t+'" rel="nofollow">'+esc(f.tel)+'</a>':'')+
+(f.web?'<a class="btn btn-cizgi btn-kucuk" href="'+esc(f.web)+'" target="_blank" rel="nofollow noopener">Web sitesi</a>':'')+'</div></article>'}}).join('');
+B.hidden=a.length>0;S.textContent=F.length?(a.length+' firma'):'';}}
+[il,kat].forEach(function(x){{x.addEventListener('change',ciz)}});q.addEventListener('input',ciz);ciz();
+var fm=document.getElementById('rh-form');fm.addEventListener('submit',function(ev){{
+var k=fm.querySelectorAll('input[name=kategoriler]:checked').length,h=document.getElementById('rh-hata');
+if(!k){{ev.preventDefault();h.hidden=false;h.scrollIntoView({{block:'center'}});return}}h.hidden=true;
+var s=[].map.call(fm.querySelectorAll('input[name=kategoriler]:checked'),function(c){{return c.value}}).join(', ');
+var g=fm.querySelector('input[name=Hizmetler]');if(!g){{g=document.createElement('input');g.type='hidden';g.name='Hizmetler';fm.appendChild(g)}}g.value=s;
+[].forEach.call(fm.querySelectorAll('input[name=kategoriler]'),function(c){{c.disabled=true}});
+window.dataLayer=window.dataLayer||[];dataLayer.push({{event:'rehber_basvuru'}});}});
+if(/[?&]gonderildi=1/.test(location.search)){{document.getElementById('rh-tamam').hidden=false}}
+}})();</script>
+</body></html>
+'''
 
 
 def bulunamadi():
@@ -386,6 +528,7 @@ def main():
     GORSEL.update(gorselleri_hazirla())
     yaz("index.html", ana_sayfa())
     yaz("gizlilik.html", gizlilik())
+    yaz("firma-rehberi.html", firma_rehberi())
     yaz("404.html", bulunamadi())
     # tuzak sayfası: robots ile yasak; buraya gelen = kuralı çiğneyen bot
     yaz("tuzak/index.html", '<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><title>Servis kaydı</title>'
@@ -394,7 +537,7 @@ def main():
         '<path d="M19.6 8.4a5.3 5.3 0 0 0-7.2 7.2L5 23v4h4l7.4-7.4a5.3 5.3 0 0 0 7.2-7.2l-3.3 3.3-3.2-.8-.8-3.2z" fill="#fff"/></svg>\n')
     yaz("robots.txt", "User-agent: *\nDisallow: /tuzak/\nAllow: /\n" + (f"\nSitemap: {URL}sitemap.xml\n" if YAYINDA else ""))
     yaz("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
-        f'<url><loc>{URL}</loc></url><url><loc>{URL}gizlilik.html</loc></url></urlset>\n')
+        f'<url><loc>{URL}</loc></url><url><loc>{URL}firma-rehberi.html</loc></url><url><loc>{URL}gizlilik.html</loc></url></urlset>\n')
     yaz("CNAME", C.ALAN.split("//")[-1].strip("/") + "\n")
     yaz(".nojekyll", "")
     print("Sayfalar yazıldı | görsel:", ", ".join(sorted(GORSEL)) or "yok (çizim kullanılıyor)", "|",
